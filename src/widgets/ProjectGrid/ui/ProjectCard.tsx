@@ -19,7 +19,7 @@ interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
-    <div className="bg-gray-900/50 border border-gray-800 rounded-lg overflow-hidden hover:border-green-500/50 transition-all duration-300 group">
+    <div className="bg-gray-900/50 cursor-pointer border border-gray-800 rounded-lg overflow-hidden hover:border-green-500/50 transition-all duration-300 group">
       <div className="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
         {project.image ? (
           <img 
@@ -36,7 +36,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <div className="absolute inset-0 bg-green-500/0 group-hover:bg-green-500/10 transition-all duration-300" />
       </div>
 
-      <div className="p-6">
+      <div className="p-10 flex flex-col gap-3">
         <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">
           {project.title}
         </h3>
@@ -145,7 +145,7 @@ export const ProjectGrid: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}

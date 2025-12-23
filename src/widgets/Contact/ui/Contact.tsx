@@ -19,12 +19,12 @@ export const Contact: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-8">
-            <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6">
+            <div className="bg-gray-900/50 border border-gray-800 rounded-lg  p-6">
               <h3 className="text-xl font-bold text-green-400 mb-6 font-mono">
                 $ contact --info
               </h3>
               
-              <div className="space-y-6">
+              <div className="space-y-6 gap-3 flex flex-col">
                 <div className="flex items-start space-x-4">
                   <Mail className="w-6 h-6 text-green-400 mt-1" />
                   <div>
@@ -34,7 +34,7 @@ export const Contact: React.FC = () => {
                     </a>
                   </div>
                 </div>
-
+{/* 
                 <div className="flex items-start space-x-4">
                   <Phone className="w-6 h-6 text-green-400 mt-1" />
                   <div>
@@ -43,7 +43,7 @@ export const Contact: React.FC = () => {
                       +82 10-1234-5678
                     </a>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="flex items-start space-x-4">
                   <MapPin className="w-6 h-6 text-green-400 mt-1" />
@@ -67,7 +67,7 @@ export const Contact: React.FC = () => {
           </div>
 
           <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-8">
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6 flex flex-col gap-3" onSubmit={(e) => e.preventDefault()}>
               <div>
                 <label className="block text-gray-400 text-sm font-mono mb-2">
                   Name
