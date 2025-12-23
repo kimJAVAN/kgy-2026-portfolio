@@ -1,67 +1,92 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+// 쪼갠 컴포넌트들 Import
 import { Loader } from "@/shared/ui/Loader";
 import { Header } from "@/widgets/Header/ui/Header";
-import { Hero } from "@/widgets/Hero/ui/Hero";
 import { Skills } from "@/widgets/Skills/ui/Skills";
-import { ProjectGrid } from "@/widgets/ProjectGrid/ui/ProjectGrid";
+import { ProjectCard } from "@/widgets/ProjectGrid/ui/ProjectCard";
 import { Contact } from "@/widgets/Contact/ui/Contact";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  // 마우스 추적 (저사양 배려: 가벼운 상태 업데이트)
-  useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouse);
-    return () => window.removeEventListener("mousemove", handleMouse);
-  }, []);
+  const containerVars = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1, 
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 } 
+    }
+  };
+
+  const itemVars = {
+    hidden: { y: 30, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.6 } }
+  };
 
   return (
-    <>
-      {/* 1. 로딩 화면 */}
+    <div className="min-h-screen bg-[#020603] selection:bg-emerald-500/30 selection:text-white" style={{
+      backgroundImage: 'linear-gradient(to right, rgba(16, 185, 129, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(16, 185, 129, 0.03) 1px, transparent 1px)',
+      backgroundSize: '50px 50px'
+    }}>
+      <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+        body { font-family: 'Share Tech Mono', monospace; overflow-x: hidden; }
+        @keyframes scan-line {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(1000%); }
+        }
+      `}</style>
+      
       <AnimatePresence>
         {isLoading && <Loader onComplete={() => setIsLoading(false)} />}
       </AnimatePresence>
 
-      {/* 2. 메인 콘텐츠 */}
       {!isLoading && (
         <motion.div 
-          initial={{ opacity: 0 }} 
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="relative min-h-screen"
+          variants={containerVars}
+          initial="hidden"
+          animate="visible"
+          className="max-w-7xl mx-auto px-6 md:px-12 py-12"
         >
-          {/* 커스텀 커서 (선택 사항) */}
-          <div 
-            className="fixed w-6 h-6 border border-green-500 pointer-events-none z-[1000] hidden md:block transition-transform duration-75 ease-out"
-            style={{ left: mousePos.x, top: mousePos.y, transform: 'translate(-50%, -50%)' }}
-          >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-green-500"></div>
-          </div>
+          <Header />
 
-          <main className="max-w-6xl mx-auto p-4 md:p-12 relative z-10">
-            <Header />
-            <div className="space-y-32">
-              <Hero />
-              <div className="grid lg:grid-cols-3 gap-16 items-start">
-                <div className="lg:col-span-1">
-                  <Skills />
-                </div>
-                <div className="lg:col-span-2">
-                  <h2 className="text-xs font-bold mb-6 text-green-800 tracking-[0.3em]">-- ARCHIVED_FILES --</h2>
-                  <ProjectGrid />
-                </div>
+          {/* Hero Section */}
+          <motion.section variants={itemVars} className="py-32 mb-32">
+            <h1 className="text-7xl md:text-[10rem] font-black italic tracking-tighter mb-12 text-emerald-500 leading-none drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+              KGY<span className="text-slate-300">_ARCHIVE</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-emerald-700/80 max-w-4xl border-l-4 border-emerald-600 pl-10 leading-relaxed font-mono">
+              프론트엔드 아키텍처와 시각적 인터랙션을 설계합니다. <br/>
+              <span className="text-emerald-500 bg-emerald-950/20 px-2 py-1">시스템의 효율성과 미학을 동시에 추구합니다.</span>
+            </p>
+          </motion.section>
+
+          {/* Skills & Projects */}
+          <section className="grid lg:grid-cols-12 gap-24 mb-32">
+            <motion.div variants={itemVars} className="lg:col-span-4">
+              <Skills />
+            </motion.div>
+
+            <motion.div variants={itemVars} className="lg:col-span-8 space-y-16">
+              <h2 className="text-[10px] font-bold text-emerald-700 tracking-[0.5em] mb-12 uppercase font-mono italic">-- Selected_Nodes --</h2>
+              <div className="grid gap-16">
+                <ProjectCard uuid="A1" title="CYBER_SHELL" desc="Next.js 기반의 고성능 대시보드 인터페이스. 실시간 데이터 시각화와 반응형 UI/UX를 구현했습니다." />
+                <ProjectCard uuid="B2" title="GHOST_PROTOCOL" desc="Firebase 리얼타임 통신 기반 데이터 동기화 시스템. 멀티 디바이스 간 seamless한 상태 관리를 제공합니다." />
               </div>
-              <Contact />
-            </div>
-          </main>
+            </motion.div>
+          </section>
+
+          <motion.div variants={itemVars}>
+            <Contact />
+          </motion.div>
+
+          <footer className="text-center py-32 text-[10px] tracking-[1.5em] text-emerald-900/50 font-mono">
+            END_OF_TRANSMISSION
+          </footer>
         </motion.div>
       )}
-    </>
+    </div>
   );
 }
