@@ -27,7 +27,7 @@ export const Header: React.FC = () => {
           <span className="font-mono text-green-400 text-lg">root@geun-young:~$</span>
         </div>
         
-        <nav className="hidden md:flex space-x-8 font-mono text-sm">
+        <nav className="hidden md:flex space-x-8 flex gap-5 font-mono text-sm">
           {navItems.map((item) => (
             <a
               key={item}
@@ -42,7 +42,7 @@ export const Header: React.FC = () => {
           ))}
         </nav>
 
-        <div className="hidden md:flex space-x-4">
+        <div className="hidden md:flex space-x-4 flex gap-5">
           <a 
             href="https://github.com" 
             target="_blank" 
