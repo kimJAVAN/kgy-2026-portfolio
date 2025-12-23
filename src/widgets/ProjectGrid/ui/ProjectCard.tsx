@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 
@@ -17,8 +19,7 @@ interface ProjectCardProps {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
-    <div className="bg-gray-900/50 border border-gray-800 rounded-lg overflow-hidden hover:border-green-500/50 transition-all duration-300 card-hover group">
-      {/* Project Image */}
+    <div className="bg-gray-900/50 border border-gray-800 rounded-lg overflow-hidden hover:border-green-500/50 transition-all duration-300 group">
       <div className="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
         {project.image ? (
           <img 
@@ -32,22 +33,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-        
-        {/* Hover Overlay */}
         <div className="absolute inset-0 bg-green-500/0 group-hover:bg-green-500/10 transition-all duration-300" />
       </div>
 
-      {/* Project Info */}
       <div className="p-6">
         <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">
           {project.title}
         </h3>
-        
         <p className="text-gray-400 text-sm mb-4 line-clamp-2">
           {project.description}
         </p>
-
-        {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tags.map((tag) => (
             <span
@@ -58,8 +53,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             </span>
           ))}
         </div>
-
-        {/* Links */}
         <div className="flex space-x-4">
           {project.githubUrl && (
             <a
@@ -89,7 +82,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   );
 };
 
-// ProjectGrid Component
 export const ProjectGrid: React.FC = () => {
   const projects: Project[] = [
     {
@@ -141,8 +133,8 @@ export const ProjectGrid: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" className="min-h-screen py-20 px-6 flex flex-col justify-center items-center">
+      <div className="max-w-7xl w-full mx-auto">
         <div className="mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-green-400 font-mono">&gt; </span>

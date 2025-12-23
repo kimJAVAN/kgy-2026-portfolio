@@ -8,6 +8,7 @@ import { Skills } from '@/widgets/Skills/ui/Skills';
 import { ProjectGrid } from '@/widgets/ProjectGrid/ui/ProjectCard';
 import { Contact } from '@/widgets/Contact/ui/Contact';
 import { Hero } from '@/widgets/Hero/ui/Hero';
+import Footer from '@/widgets/Footer/ui/Footer';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,18 +39,7 @@ export default function Home() {
       <Contact />
 
       {/* Footer */}
-      <footer className="border-t border-gray-800 py-8 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="font-mono text-sm text-gray-400">
-              <span className="text-green-400">©</span> 2024 김근영. All rights reserved.
-            </div>
-            <div className="font-mono text-sm text-gray-400">
-              Built with <span className="text-red-500">♥</span> using Next.js & TypeScript
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </main>
   );
 }

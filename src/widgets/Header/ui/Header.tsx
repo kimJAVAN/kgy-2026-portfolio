@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
 import { Terminal, Github, Linkedin, Menu, X } from 'lucide-react';
 
@@ -16,17 +18,15 @@ export const Header: React.FC = () => {
   const navItems = ['about', 'skills', 'projects', 'contact'];
 
   return (
-    <header className={`fixed top-0 w-full z-40 transition-all duration-300 ${
+    <header className={`fixed flex justify-center top-0 w-full z-40 transition-all duration-300 ${
       isScrolled ? 'bg-black/80 backdrop-blur-lg border-b border-green-500/20' : 'bg-transparent'
     }`}>
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
+      <div className="max-w-7xl mx-auto px-6 py-4 gap-50 flex items-center justify-between">
         <div className="flex items-center space-x-2">
           <Terminal className="w-6 h-6 text-green-400" />
           <span className="font-mono text-green-400 text-lg">root@geun-young:~$</span>
         </div>
         
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-8 font-mono text-sm">
           {navItems.map((item) => (
             <a
@@ -42,7 +42,6 @@ export const Header: React.FC = () => {
           ))}
         </nav>
 
-        {/* Social Links */}
         <div className="hidden md:flex space-x-4">
           <a 
             href="https://github.com" 
@@ -62,7 +61,6 @@ export const Header: React.FC = () => {
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
         <button
           className="md:hidden text-green-400"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -71,10 +69,9 @@ export const Header: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-black/95 backdrop-blur-lg border-b border-green-500/20">
-          <nav className="flex flex-col space-y-4 px-6 py-4 font-mono text-sm">
+          <nav className="flex flex-col space-y-4 px-6 py-6 font-mono text-sm">
             {navItems.map((item) => (
               <a
                 key={item}

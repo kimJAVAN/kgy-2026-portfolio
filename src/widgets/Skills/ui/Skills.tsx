@@ -1,16 +1,23 @@
+"use client";
+
 import React, { useState } from 'react';
 import { Code, Layers, Database, Wrench } from 'lucide-react';
 
 interface Skill {
   name: string;
   level: number;
-  category: string;
+}
+
+interface CategoryData {
+  icon: React.ReactNode;
+  title: string;
+  skills: Skill[];
 }
 
 export const Skills: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState('frontend');
+  const [activeCategory, setActiveCategory] = useState<string>('frontend');
 
-  const skillCategories = {
+  const skillCategories: Record<string, CategoryData> = {
     frontend: {
       icon: <Code className="w-6 h-6" />,
       title: 'Frontend',
@@ -58,8 +65,8 @@ export const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="py-20 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="skills" className="min-h-screen py-20 px-6 flex flex-col justify-center items-center">
+      <div className="max-w-7xl w-full mx-auto">
         <div className="mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-green-400 font-mono">&gt; </span>
@@ -70,7 +77,6 @@ export const Skills: React.FC = () => {
           </p>
         </div>
 
-        {/* Category Tabs */}
         <div className="flex flex-wrap gap-4 mb-12">
           {Object.entries(skillCategories).map(([key, category]) => (
             <button
@@ -78,7 +84,7 @@ export const Skills: React.FC = () => {
               onClick={() => setActiveCategory(key)}
               className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-mono text-sm transition-all duration-300 ${
                 activeCategory === key
-                  ? 'bg-green-500/20 text-green-400 border border-green-500'
+                  ? 'bg-green-500/20 text-green-400 border border-green-500 shadow-[0_0_15px_rgba(34,197,94,0.2)]'
                   : 'bg-gray-900/50 text-gray-400 border border-gray-800 hover:border-green-500/50'
               }`}
             >
@@ -88,13 +94,11 @@ export const Skills: React.FC = () => {
           ))}
         </div>
 
-        {/* Skills Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {skillCategories[activeCategory].skills.map((skill, index) => (
+          {skillCategories[activeCategory].skills.map((skill) => (
             <div
               key={skill.name}
               className="bg-gray-900/50 border border-gray-800 rounded-lg p-6 hover:border-green-500/50 transition-all duration-300"
-              style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="flex justify-between items-center mb-3">
                 <span className="text-white font-mono">{skill.name}</span>
@@ -110,7 +114,6 @@ export const Skills: React.FC = () => {
           ))}
         </div>
 
-        {/* Additional Info */}
         <div className="mt-12 p-6 bg-green-500/5 border border-green-500/20 rounded-lg">
           <p className="text-gray-400 font-mono text-sm">
             <span className="text-green-400">$</span> cat skills.txt

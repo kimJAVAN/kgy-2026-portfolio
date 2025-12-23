@@ -1,10 +1,12 @@
+"use client";
+
 import React from 'react';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 
 export const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-20 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="contact" className="min-h-screen py-20 px-6 flex flex-col justify-center items-center">
+      <div className="max-w-7xl w-full mx-auto">
         <div className="mb-12">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-green-400 font-mono">&gt; </span>
@@ -15,8 +17,7 @@ export const Contact: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-8">
             <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6">
               <h3 className="text-xl font-bold text-green-400 mb-6 font-mono">
@@ -65,9 +66,8 @@ export const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
           <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-8">
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
               <div>
                 <label className="block text-gray-400 text-sm font-mono mb-2">
                   Name
