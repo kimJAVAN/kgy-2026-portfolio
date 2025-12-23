@@ -1,51 +1,164 @@
-"use client";
-import { motion } from "framer-motion";
+import React from 'react';
+import { ExternalLink, Github } from 'lucide-react';
 
-export const ProjectCard = ({ uuid, title, desc }: { uuid: string, title: string, desc: string }) => {
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  tags: string[];
+  githubUrl?: string;
+  liveUrl?: string;
+  image?: string;
+}
+
+interface ProjectCardProps {
+  project: Project;
+}
+
+export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
   return (
-    <motion.div 
-      whileHover={{ scale: 1.01, y: -8 }}
-      transition={{ duration: 0.3 }}
-      className="relative p-10 bg-zinc-950/50 group cursor-pointer border border-emerald-900/20 hover:border-emerald-600/50 transition-all duration-500 font-mono"
-    >
-      <div className="absolute top-0 left-0 w-3 h-3 border-l-2 border-t-2 border-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-      <div className="absolute bottom-0 right-0 w-3 h-3 border-r-2 border-b-2 border-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-
-      <div className="flex justify-between items-start mb-8 text-[10px] text-emerald-700 font-bold tracking-[0.2em]">
-        <span>NODE_0x{uuid}</span>
-        <div className="w-2 h-2 bg-emerald-500 group-hover:animate-ping"></div>
+    <div className="bg-gray-900/50 border border-gray-800 rounded-lg overflow-hidden hover:border-green-500/50 transition-all duration-300 card-hover group">
+      {/* Project Image */}
+      <div className="relative h-48 bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
+        {project.image ? (
+          <img 
+            src={project.image} 
+            alt={project.title}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <div className="text-6xl font-mono text-green-500/20">{'</>'}</div>
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+        
+        {/* Hover Overlay */}
+        <div className="absolute inset-0 bg-green-500/0 group-hover:bg-green-500/10 transition-all duration-300" />
       </div>
 
-      <h3 className="text-4xl font-black text-slate-100 mb-6 group-hover:text-emerald-400 transition-colors duration-300 italic">
-        {title}
-      </h3>
+      {/* Project Info */}
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">
+          {project.title}
+        </h3>
+        
+        <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+          {project.description}
+        </p>
 
-      <div className="relative aspect-video bg-black border border-emerald-900/20 mb-8 overflow-hidden group-hover:border-emerald-700/40 transition-all duration-300">
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity" 
-             style={{
-               backgroundImage: 'linear-gradient(to right, rgba(16, 185, 129, 0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(16, 185, 129, 0.1) 1px, transparent 1px)',
-               backgroundSize: '40px 40px'
-             }}></div>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-[10px] tracking-[1em] text-emerald-800 group-hover:text-emerald-600 transition-colors">ENCRYPTED_DATA</span>
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className="px-3 py-1 bg-green-500/10 text-green-400 text-xs font-mono rounded border border-green-500/30"
+            >
+              {tag}
+            </span>
+          ))}
         </div>
-        <div className="absolute top-0 left-0 w-full h-[2px] bg-emerald-500/30 opacity-0 group-hover:opacity-100 transition-opacity shadow-[0_0_15px_rgba(16,185,129,0.5)]" 
-             style={{ animation: 'scan-line 2s linear infinite' }}></div>
-      </div>
 
-      <p className="text-emerald-700/80 text-sm leading-loose mb-10 group-hover:text-emerald-500/90 transition-colors tracking-tighter">
-        {desc}
-      </p>
-
-      <div className="flex justify-between items-center text-[10px]">
-        <span className="text-emerald-800 italic">STATUS: STABLE</span>
-        <motion.button 
-          whileTap={{ scale: 0.95 }}
-          className="px-8 py-2.5 bg-transparent border border-emerald-600 text-emerald-500 text-xs font-bold hover:bg-emerald-600 hover:text-black transition-all duration-300 uppercase"
-        >
-          Execute_View
-        </motion.button>
+        {/* Links */}
+        <div className="flex space-x-4">
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-gray-400 hover:text-green-400 transition-colors text-sm"
+            >
+              <Github className="w-4 h-4" />
+              <span>Code</span>
+            </a>
+          )}
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-gray-400 hover:text-green-400 transition-colors text-sm"
+            >
+              <ExternalLink className="w-4 h-4" />
+              <span>Live Demo</span>
+            </a>
+          )}
+        </div>
       </div>
-    </motion.div>
+    </div>
+  );
+};
+
+// ProjectGrid Component
+export const ProjectGrid: React.FC = () => {
+  const projects: Project[] = [
+    {
+      id: 1,
+      title: 'E-Commerce Platform',
+      description: 'Full-stack e-commerce solution with payment integration, inventory management, and real-time analytics.',
+      tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+      githubUrl: 'https://github.com',
+      liveUrl: 'https://example.com',
+    },
+    {
+      id: 2,
+      title: 'AI Chat Application',
+      description: 'Real-time chat application powered by AI with natural language processing capabilities.',
+      tags: ['Next.js', 'TypeScript', 'OpenAI', 'WebSocket'],
+      githubUrl: 'https://github.com',
+      liveUrl: 'https://example.com',
+    },
+    {
+      id: 3,
+      title: 'Task Management System',
+      description: 'Collaborative task management tool with drag-and-drop interface and team synchronization.',
+      tags: ['React', 'Redux', 'Firebase', 'Tailwind'],
+      githubUrl: 'https://github.com',
+    },
+    {
+      id: 4,
+      title: 'Portfolio CMS',
+      description: 'Content management system for portfolios with custom themes and analytics dashboard.',
+      tags: ['Next.js', 'Prisma', 'PostgreSQL', 'AWS'],
+      githubUrl: 'https://github.com',
+      liveUrl: 'https://example.com',
+    },
+    {
+      id: 5,
+      title: 'Social Media Dashboard',
+      description: 'Analytics dashboard aggregating data from multiple social media platforms.',
+      tags: ['React', 'Chart.js', 'Express', 'OAuth'],
+      githubUrl: 'https://github.com',
+    },
+    {
+      id: 6,
+      title: 'Code Snippet Manager',
+      description: 'Developer tool for organizing and sharing code snippets with syntax highlighting.',
+      tags: ['Vue.js', 'Node.js', 'MongoDB', 'Prism'],
+      githubUrl: 'https://github.com',
+      liveUrl: 'https://example.com',
+    },
+  ];
+
+  return (
+    <section id="projects" className="py-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-green-400 font-mono">&gt; </span>
+            <span className="glow-text">Featured Projects</span>
+          </h2>
+          <p className="text-gray-400 font-mono text-sm">
+            // Building the future, one commit at a time
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };

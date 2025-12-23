@@ -1,33 +1,126 @@
-"use client";
-import { SendPacketForm } from "@/features/SendMessage/ui/SendPacketForm";
+import React from 'react';
+import { Mail, MapPin, Phone, Send } from 'lucide-react';
 
-export const Contact = () => {
+export const Contact: React.FC = () => {
   return (
-    <section className="py-32 border-t border-emerald-900/30">
-      <div className="grid md:grid-cols-2 gap-20">
-        <div className="font-mono">
-          <h2 className="text-4xl font-black mb-8 italic text-slate-100 uppercase tracking-tighter">Establishing_Link</h2>
-          <p className="text-emerald-700/80 text-base leading-loose mb-10 tracking-tighter">
-            데이터 전송 준비 완료. 협업 제안이나 질문이 있다면 아래 터미널을 통해 패킷을 전송하십시오. 
-            암호화된 채널을 통해 즉시 전달됩니다.
+    <section id="contact" className="py-20 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-green-400 font-mono">&gt; </span>
+            <span className="glow-text">Get In Touch</span>
+          </h2>
+          <p className="text-gray-400 font-mono text-sm">
+            // Let's collaborate on something amazing
           </p>
-          <div className="space-y-3 text-sm text-emerald-600 uppercase">
-            <div>Email: user@kgy.archive</div>
-            <div>Github: github.com/kgy_dev</div>
-            <div>Location: 127.0.0.1 (Seoul, KR)</div>
-          </div>
         </div>
-        
-        <div className="border border-emerald-600/30 p-8 bg-emerald-950/5 shadow-[inset_0_0_30px_rgba(16,185,129,0.05)]">
-          <div className="flex items-center gap-2 mb-8 border-b border-emerald-600/20 pb-3">
-            <div className="flex gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-red-900/50"></div>
-              <div className="w-2.5 h-2.5 rounded-full bg-yellow-900/50"></div>
-              <div className="w-2.5 h-2.5 rounded-full bg-emerald-900/50"></div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Contact Info */}
+          <div className="space-y-8">
+            <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6">
+              <h3 className="text-xl font-bold text-green-400 mb-6 font-mono">
+                $ contact --info
+              </h3>
+              
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <Mail className="w-6 h-6 text-green-400 mt-1" />
+                  <div>
+                    <p className="text-gray-400 text-sm mb-1">Email</p>
+                    <a href="mailto:geun-young@example.com" className="text-white hover:text-green-400 transition-colors">
+                      geun-young@example.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <Phone className="w-6 h-6 text-green-400 mt-1" />
+                  <div>
+                    <p className="text-gray-400 text-sm mb-1">Phone</p>
+                    <a href="tel:+821012345678" className="text-white hover:text-green-400 transition-colors">
+                      +82 10-1234-5678
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <MapPin className="w-6 h-6 text-green-400 mt-1" />
+                  <div>
+                    <p className="text-gray-400 text-sm mb-1">Location</p>
+                    <p className="text-white">Seoul, South Korea</p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <span className="text-[10px] ml-auto text-emerald-600/50 font-mono">COMM_PORT: 443</span>
+
+            <div className="bg-green-500/5 border border-green-500/20 rounded-lg p-6">
+              <p className="text-gray-300 font-mono text-sm">
+                <span className="text-green-400">&gt;</span> Currently open to new opportunities
+                <br />
+                <span className="text-green-400">&gt;</span> Response time: 24-48 hours
+                <br />
+                <span className="text-green-400">&gt;</span> Available for: freelance, full-time
+              </p>
+            </div>
           </div>
-          <SendPacketForm />
+
+          {/* Contact Form */}
+          <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-8">
+            <form className="space-y-6">
+              <div>
+                <label className="block text-gray-400 text-sm font-mono mb-2">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-colors"
+                  placeholder="John Doe"
+                />
+              </div>
+
+              <div>
+                <label className="block text-gray-400 text-sm font-mono mb-2">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-colors"
+                  placeholder="john@example.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-gray-400 text-sm font-mono mb-2">
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  className="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-colors"
+                  placeholder="Project Inquiry"
+                />
+              </div>
+
+              <div>
+                <label className="block text-gray-400 text-sm font-mono mb-2">
+                  Message
+                </label>
+                <textarea
+                  rows={5}
+                  className="w-full bg-black/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-green-500 focus:outline-none transition-colors resize-none"
+                  placeholder="Tell me about your project..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-green-500 hover:bg-green-600 text-black font-bold py-3 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2 group"
+              >
+                <span>Send Message</span>
+                <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
