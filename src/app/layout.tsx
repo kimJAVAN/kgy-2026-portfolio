@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { BackgroundGrid } from '@/shared/ui/BackgroundGrid'
 
 export const metadata: Metadata = {
   title: '김근영 - Frontend Developer',
@@ -13,7 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className='flex flex-col w-full'>{children}</body>
+      <body className='flex flex-col w-full'>
+        <BackgroundGrid/>
+        <main>
+          {children}
+        </main>
+      </body>
     </html>
   )
 }

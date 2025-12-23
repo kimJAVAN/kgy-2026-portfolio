@@ -33,7 +33,7 @@ export const Hero = () => {
 
           {/* Main Title Area */}
           <div className="space-y-6">
-            <h1 className="text-5xl md:text-8xl font-bold tracking-tight">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
               <span className="text-white">안녕하세요,</span>
               <br />
               <div className="mt-2">
