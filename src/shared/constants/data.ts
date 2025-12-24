@@ -1,4 +1,4 @@
-import { Project, Skill, SocialLink } from '@/shared/types';
+import { Project, Skill, SocialLink } from '@/shared/types/index.ts';
 
 export const PROJECTS: Project[] = [
   {
@@ -58,9 +58,11 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ];
 
 export const NAV_ITEMS = [
-  { label: 'Home', href: '#home' },
+  { label: 'Home', href: '/' },
   { label: 'About', href: '#about' },
   { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Guestbook', href: '/guestbook' },
   { label: 'Contact', href: '#contact' },
 ];

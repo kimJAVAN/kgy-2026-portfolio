@@ -1,8 +1,12 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
-import { Input, Textarea, Button } from '@/shared/ui';
-import { ContactFormData } from '@/shared/types';
+import { Input } from '@/shared/ui/Input';
+import { Textarea } from '@/shared/ui/Textarea';
+import { Button } from '@/shared/ui/Button';
+import { ContactFormData } from '@/shared/types/index.ts';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '@/shared/lib/firebase';
 
 export const ContactForm = () => {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -16,14 +20,23 @@ export const ContactForm = () => {
     e.preventDefault();
     setStatus('loading');
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
+    try {
+      // Firebase에 저장
+      await addDoc(collection(db, 'contacts'), {
+        ...formData,
+        createdAt: new Date(),
+        notificationEmail: 'ookim7717@naver.com',
+      });
+
       setStatus('success');
       setFormData({ name: '', email: '', message: '' });
       
       setTimeout(() => setStatus('idle'), 3000);
-    }, 1500);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 3000);
+    }
   };
 
   const handleChange = (field: keyof ContactFormData, value: string) => {
@@ -69,6 +82,12 @@ export const ContactForm = () => {
       {status === 'success' && (
         <p className="text-emerald-400 text-center font-mono text-sm">
           Message sent successfully!
+        </p>
+      )}
+      
+      {status === 'error' && (
+        <p className="text-red-400 text-center font-mono text-sm">
+          Failed to send message. Please try again.
         </p>
       )}
     </form>

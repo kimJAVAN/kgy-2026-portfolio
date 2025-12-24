@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { Menu, X, Terminal } from 'lucide-react';
-import { NAV_ITEMS } from '@/shared/constants/data';
+import { NAV_ITEMS } from '@/shared/constants/data.ts';
 import { Container } from '@/shared/ui/Container';
 
 export const Navigation = () => {
@@ -17,6 +18,8 @@ export const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isExternalLink = (href: string) => href.startsWith('#');
+
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -28,21 +31,31 @@ export const Navigation = () => {
       <Container>
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors">
+          <Link href="/" className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors">
             <Terminal className="w-6 h-6" />
             <span className="font-mono font-bold text-lg">dev.portfolio</span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {NAV_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="font-mono text-sm text-gray-300 hover:text-emerald-400 transition-colors"
-              >
-                {item.label}
-              </a>
+              isExternalLink(item.href) ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="font-mono text-sm text-gray-300 hover:text-emerald-400 transition-colors"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="font-mono text-sm text-gray-300 hover:text-emerald-400 transition-colors"
+                >
+                  {item.label}
+                </Link>
+              )
             ))}
           </div>
 
@@ -59,14 +72,25 @@ export const Navigation = () => {
         {isOpen && (
           <div className="md:hidden py-4 border-t border-emerald-500/20">
             {NAV_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="block py-3 font-mono text-gray-300 hover:text-emerald-400 transition-colors"
-              >
-                {item.label}
-              </a>
+              isExternalLink(item.href) ? (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block py-3 font-mono text-gray-300 hover:text-emerald-400 transition-colors"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block py-3 font-mono text-gray-300 hover:text-emerald-400 transition-colors"
+                >
+                  {item.label}
+                </Link>
+              )
             ))}
           </div>
         )}

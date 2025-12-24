@@ -26,3 +26,21 @@ export interface ContactFormData {
   email: string;
   message: string;
 }
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  content: string;
+  excerpt: string;
+  imageUrl?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  published: boolean;
+}
+
+export interface GuestbookEntry {
+  id: string;
+  name: string;
+  message: string;
+  createdAt: Date;
+}
