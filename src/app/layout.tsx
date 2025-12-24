@@ -1,27 +1,32 @@
-import type { Metadata } from 'next'
-import './globals.css'
-import { BackgroundGrid } from '@/shared/ui/BackgroundGrid'
-import { CustomCursor } from '@/shared/ui/CustomCursor'
+import type { Metadata } from 'next';
+import { JetBrains_Mono } from 'next/font/google';
+import './globals.css';
+import { CursorEffect } from '@/features/cursor-effect/CursorEffect';
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+});
 
 export const metadata: Metadata = {
-  title: '김근영 - Frontend Developer',
-  description: 'Professional Frontend Developer Portfolio',
-}
+  title: 'Developer Portfolio | Frontend Engineer',
+  description: 'Professional portfolio showcasing modern web development projects and skills',
+  keywords: ['developer', 'frontend', 'portfolio', 'react', 'nextjs', 'typescript'],
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="ko">
-      <body className='flex flex-col w-full'>
-        <BackgroundGrid/>
-        <main>
-          <CustomCursor />
+    <html lang="en" className="scroll-smooth">
+      <body className={`${jetbrainsMono.variable} antialiased`}>
+        <CursorEffect />
+        <div className="matrix-bg min-h-screen">
           {children}
-        </main>
+        </div>
       </body>
     </html>
-  )
+  );
 }
