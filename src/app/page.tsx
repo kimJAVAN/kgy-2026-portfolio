@@ -1,45 +1,32 @@
-'use client';
-
-import React, { useState } from 'react';
-
-import { Loader } from '@/shared/ui/Loader';
-import { Header } from '@/widgets/Header/ui/Header';
-import { Skills } from '@/widgets/Skills/ui/Skills';
-import { ProjectGrid } from '@/widgets/ProjectGrid/ui/ProjectCard';
-import { Contact } from '@/widgets/Contact/ui/Contact';
-import { Hero } from '@/widgets/Hero/ui/Hero';
-import Footer from '@/widgets/Footer/ui/Footer';
+import { Navigation } from '@/widgets/Navigation/Navigation';
+import { Hero } from '@/widgets/Hero/Hero';
+import { About } from '@/widgets/About/About';
+import { Projects } from '@/widgets/Projects/Projects';
+import { Skills } from '@/widgets/Skills/Skills';
+import { Contact } from '@/widgets/Contact/Contact';
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  if (isLoading) {
-    // Loader의 프롭명은 Loader 파일의 정의에 따라 onLoadingComplete 혹은 onComplete로 맞춰주세요
-    return <Loader onComplete={() => setIsLoading(false)} />;
-  }
-
   return (
-    <main className="min-h-screen text-white">
-      {/* Grid Background */}
-      <div className="grid-background" />
-      <div className="scanline" />
+    <>
+      <Navigation />
+      <main>
+        <Hero />
+        <About />
+        <Projects />
+        <Skills />
+        <Contact />
+      </main>
       
-      <Header />
-
-      {/* Hero Section */}
-      <Hero />
-
-      {/* Skills Section */}
-      <Skills />
-
-      {/* Projects Section */}
-      <ProjectGrid />
-
-      {/* Contact Section */}
-      <Contact />
-
-      {/* Footer */}
-      <Footer/>
-    </main>
+      <footer className="bg-black/80 border-t border-emerald-500/20 py-8">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <p className="text-gray-400 font-mono text-sm">
+            © 2025 Kim Geun Young. Built with Next.js, TypeScript & Tailwind CSS
+          </p>
+          <p className="text-emerald-400/50 font-mono text-xs mt-2">
+            &lt;/&gt; with ❤️
+          </p>
+        </div>
+      </footer>
+    </>
   );
 }
