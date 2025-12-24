@@ -1,4 +1,4 @@
-import { Project, Skill, SocialLink } from '@/shared/types/index.ts';
+import { Project, Skill, SocialLink } from '@/shared/types/index';
 
 export const PROJECTS: Project[] = [
   {

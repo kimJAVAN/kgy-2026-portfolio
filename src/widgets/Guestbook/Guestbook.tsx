@@ -6,7 +6,7 @@ import { Card } from '@/shared/ui/Card';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { Textarea } from '@/shared/ui/Textarea';
-import { GuestbookEntry } from '@/shared/types/index.ts';
+import { GuestbookEntry } from '@/shared/types/index';
 import { collection, addDoc, query, orderBy, getDocs, limit } from 'firebase/firestore';
 import { db } from '@/shared/lib/firebase';
 import { MessageSquare } from 'lucide-react';

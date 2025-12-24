@@ -11,7 +11,7 @@ import { Card } from '@/shared/ui/Card';
 import { Button } from '@/shared/ui/Button';
 import { Input } from '@/shared/ui/Input';
 import { Textarea } from '@/shared/ui/Textarea';
-import { BlogPost } from '@/shared/types/index.ts';
+import { BlogPost } from '@/shared/types/index';
 import { LogOut, Trash2, Upload } from 'lucide-react';
 
 export default function AdminPage() {
