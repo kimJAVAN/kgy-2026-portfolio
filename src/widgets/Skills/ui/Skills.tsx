@@ -64,10 +64,10 @@ export const Skills: React.FC = () => {
 
   return (
     <section id="skills" className="min-h-screen py-32 px-6 flex flex-col justify-center items-center">
-      <div className="max-w-7xl w-full mx-auto flex flex-col gap-10">
+      <div className="max-w-7xl w-full mx-auto flex flex-col gap-16">
         
         {/* Header Section */}
-        <div className="mb-16 space-y-4 flex flex-col gap-5">
+        <div className="space-y-6">
           <div className="flex items-center space-x-2 text-green-500 font-mono text-sm tracking-widest uppercase">
             <span className="h-px w-8 bg-green-500/50"></span>
             <span>Expertise Area</span>
@@ -76,13 +76,13 @@ export const Skills: React.FC = () => {
             <span className="text-white">Technical </span>
             <span className="glow-text text-white">Skills</span>
           </h2>
-          <p className="text-gray-500 font-mono text-lg max-w-xl leading-relaxed">
+          <p className="text-gray-500 font-mono text-lg max-w-xl leading-relaxed mt-4">
             // 다양한 기술 스택을 활용하여 확장 가능하고 고성능의 웹 서비스를 구축합니다.
           </p>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap gap-3 mb-16">
+        <div className="flex flex-wrap gap-4">
           {Object.entries(skillCategories).map(([key, category]) => (
             <button
               key={key}
@@ -104,27 +104,25 @@ export const Skills: React.FC = () => {
         {/* Skills Grid with Animation */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           <AnimatePresence mode='wait'>
             {skillCategories[activeCategory].skills.map((skill, index) => (
-          <motion.div
+              <motion.div
                 key={`${activeCategory}-${skill.name}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                // 부모: items-center를 추가하여 자식을 가로 중앙으로 정렬
-                className="relative bg-gray-900/30 border border-gray-800/60 rounded-2xl p-10 min-h-[100px] flex flex-col justify-center items-center hover:border-green-500/40 hover:bg-gray-900/50 transition-all duration-500 group overflow-hidden"
+                className="relative bg-gray-900/30 border border-gray-800/60 rounded-2xl p-8 min-h-[140px] flex flex-col justify-center items-center hover:border-green-500/40 hover:bg-gray-900/50 transition-all duration-500 group overflow-hidden"
               >
                 {/* 배경 Glow 효과 */}
                 <div className="absolute -right-10 -top-10 w-32 h-32 bg-green-500/5 blur-3xl rounded-full group-hover:bg-green-500/10 transition-colors duration-500" />
                 
-                {/* 자식: w-[90%]와 mx-auto를 사용하여 내부 콘텐츠를 중앙에 배치 */}
-                <div className="relative z-10 w-[90%] mx-auto flex flex-col justify-center">
-                  <div className="flex justify-between items-end mb-6">
+                <div className="relative z-10 w-[90%] mx-auto flex flex-col justify-center gap-6">
+                  <div className="flex justify-between items-end">
                     <div>
-                      <div className="text-gray-500 text-xs font-mono mb-1 tracking-tighter">SKILL_NAME</div>
+                      <div className="text-gray-500 text-xs font-mono mb-2 tracking-tighter">SKILL_NAME</div>
                       <div className="text-xl font-bold text-white tracking-wide group-hover:text-green-400 transition-colors">
                         {skill.name}
                       </div>
@@ -136,7 +134,7 @@ export const Skills: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* 프로그레스 바 영역 (90% 너비 안에 꽉 차게 들어감) */}
+                  {/* 프로그레스 바 */}
                   <div className="relative w-full h-1.5 bg-gray-800 rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
@@ -152,8 +150,8 @@ export const Skills: React.FC = () => {
         </motion.div>
 
         {/* Footer Note */}
-        <div className="mt-20 p-8 bg-gradient-to-r from-gray-900/40 to-transparent border-l-2 border-green-500 rounded-r-2xl">
-          <div className="flex items-center space-x-2 text-green-400 font-mono text-sm mb-3">
+        <div className="mt-12 p-8 bg-gradient-to-r from-gray-900/40 to-transparent border-l-2 border-green-500 rounded-r-2xl">
+          <div className="flex items-center space-x-2 text-green-400 font-mono text-sm mb-4">
             <span className="animate-pulse">●</span>
             <span>SYSTEM_STATUS: CONTINUOUS_LEARNING</span>
           </div>

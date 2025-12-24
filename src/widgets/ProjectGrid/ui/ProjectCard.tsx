@@ -36,14 +36,16 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <div className="absolute inset-0 bg-green-500/0 group-hover:bg-green-500/10 transition-all duration-300" />
       </div>
 
-      <div className="p-10 flex flex-col gap-3">
-        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-green-400 transition-colors">
+      <div className="p-8 flex flex-col gap-5">
+        <h3 className="text-xl font-bold text-white group-hover:text-green-400 transition-colors">
           {project.title}
         </h3>
-        <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+        
+        <p className="text-gray-400 text-sm line-clamp-2 leading-relaxed">
           {project.description}
         </p>
-        <div className="flex flex-wrap gap-2 mb-4">
+        
+        <div className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <span
               key={tag}
@@ -53,7 +55,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             </span>
           ))}
         </div>
-        <div className="flex space-x-4">
+        
+        <div className="flex space-x-4 pt-2">
           {project.githubUrl && (
             <a
               href={project.githubUrl}
@@ -133,19 +136,25 @@ export const ProjectGrid: React.FC = () => {
   ];
 
   return (
-    <section id="projects" className="min-h-screen py-20 px-6 flex flex-col justify-center items-center">
+    <section id="projects" className="min-h-screen py-32 px-6 flex flex-col justify-center items-center">
       <div className="max-w-7xl w-full mx-auto">
-        <div className="mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-green-400 font-mono">&gt; </span>
-            <span className="glow-text">Featured Projects</span>
+        <div className="mb-16 space-y-6">
+          <div className="flex items-center space-x-2 text-green-500 font-mono text-sm tracking-widest uppercase">
+            <span className="h-px w-8 bg-green-500/50"></span>
+            <span>Portfolio</span>
+          </div>
+          
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight">
+            <span className="text-white">Featured </span>
+            <span className="glow-text">Projects</span>
           </h2>
-          <p className="text-gray-400 font-mono text-sm">
+          
+          <p className="text-gray-500 font-mono text-lg leading-relaxed max-w-xl">
             // Building the future, one commit at a time
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
