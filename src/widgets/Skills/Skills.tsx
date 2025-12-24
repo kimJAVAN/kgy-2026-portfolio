@@ -2,7 +2,7 @@
 
 import { Section } from '@/shared/ui/Section';
 import { Card } from '@/shared/ui/Card';
-import { SKILLS } from '@/shared/constants/data.ts';
+import { SKILLS } from '@/shared/constants/data';
 
 const CATEGORIES = {
   frontend: 'Frontend',
