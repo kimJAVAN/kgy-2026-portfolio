@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 import { Navigation } from '@/widgets/Navigation/Navigation';
@@ -26,15 +26,17 @@ export default function Home() {
 
   return (
     <>
+    <Suspense>
       <Navigation />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
-      </main>
+        <main>
+          <Hero />
+          <About />
+          <Projects />
+          <Skills />
+          <Contact />
+        </main>
       <Footer />
+    </Suspense>
     </>
   );
 }
