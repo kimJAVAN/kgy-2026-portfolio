@@ -48,7 +48,7 @@ export const Hero = () => {
           </p>
           
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            Hi, I'm <span className="text-emerald-400">Your Name</span>
+            Hi, I'm <span className="text-emerald-400">Geun Young</span>
           </h1>
           
           <div className="h-12 mb-8">

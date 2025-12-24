@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+* {
+  cursor: none !important;
+}
+
 body {
   background-color: #000;
   color: #fff;

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { JetBrains_Mono } from 'next/font/google';
 import './globals.css';
+import { CursorEffect } from '@/features/cursor-effect/CursorEffect';
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${jetbrainsMono.variable} antialiased`}>
+        <CursorEffect />
         <div className="matrix-bg min-h-screen">
           {children}
         </div>
