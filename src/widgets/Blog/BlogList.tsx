@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Section } from '@/shared/ui/Section';
 import { Card } from '@/shared/ui/Card';
 import { Button } from '@/shared/ui/Button';
-import { BlogPost } from '@/shared/types/index.ts';
+import { BlogPost } from '@/shared/types/index';
 import { collection, query, where, orderBy, getDocs } from 'firebase/firestore';
 import { db } from '@/shared/lib/firebase';
 import { Calendar, Clock } from 'lucide-react';

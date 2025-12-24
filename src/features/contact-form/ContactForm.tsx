@@ -4,7 +4,7 @@ import { useState, FormEvent } from 'react';
 import { Input } from '@/shared/ui/Input';
 import { Textarea } from '@/shared/ui/Textarea';
 import { Button } from '@/shared/ui/Button';
-import { ContactFormData } from '@/shared/types/index.ts';
+import { ContactFormData } from '@/shared/types/index';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '@/shared/lib/firebase';
 
