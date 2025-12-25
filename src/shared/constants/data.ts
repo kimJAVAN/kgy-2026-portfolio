@@ -77,7 +77,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
   { name: 'GitHub', url: 'https://github.com/kimJAVAN', icon: 'github' },
   { name: 'Blog', url: 'https://fron-end-note.tistory.com/', icon: 'blog' },
   { name: 'LinkedIn', url: 'https://www.linkedin.com/in/%EA%B7%BC%EC%98%81-%EA%B9%80-48143b342/', icon: 'linkedin' },
-  { name: 'Email', url: 'ookim7717@naver.com', icon: 'mail' },
+  { name: 'Email', url: 'mailto:ookim7717@naver.com', icon: 'mail' },
 ];
 
 export const NAV_ITEMS = [
