@@ -1,12 +1,12 @@
-import { ReactNode } from 'react';
+import { ReactNode, HTMLAttributes } from 'react';
 
-interface CardProps {
+interface CardProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   className?: string;
   hover?: boolean;
 }
 
-export const Card = ({ children, className = '', hover = true }: CardProps) => {
+export const Card = ({ children, className = '', hover = true, ...props }: CardProps) => {
   return (
     <div
       className={`
@@ -14,6 +14,7 @@ export const Card = ({ children, className = '', hover = true }: CardProps) => {
         ${hover ? 'hover:border-emerald-500/50 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)] transition-all duration-300' : ''}
         ${className}
       `}
+      {...props}
     >
       {children}
     </div>
