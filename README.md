@@ -2,6 +2,9 @@
 
 현대적이고 세련된 개발자 포트폴리오 사이트입니다.
 
+## 배포 링크
+https://kgy-2026-portfolio.vercel.app/
+
 ## 🚀 기술 스택
 
 - **Framework**: Next.js 14 (App Router)
