@@ -1,34 +1,42 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Section } from '@/shared/ui/Section';
 import { Card } from '@/shared/ui/Card';
 import { Button } from '@/shared/ui/Button';
 import { BlogPost } from '@/shared/types/index';
-import { collection, query, where, orderBy, getDocs } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@/shared/lib/firebase';
 import { Calendar, Clock } from 'lucide-react';
 
 export const BlogList = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const q = query(
-          collection(db, 'blog-posts'),
-          where('published', '==', true),
-          orderBy('createdAt', 'desc')
-        );
-        const snapshot = await getDocs(q);
+        // 인덱스 없이 작동 - orderBy 제거
+        const snapshot = await getDocs(collection(db, 'blog-posts'));
+        
         const postsData = snapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data(),
           createdAt: doc.data().createdAt?.toDate(),
           updatedAt: doc.data().updatedAt?.toDate(),
         })) as BlogPost[];
-        setPosts(postsData);
+        
+        // JavaScript로 필터링 + 정렬
+        const publishedPosts = postsData
+          .filter(post => post.published !== false)
+          .sort((a, b) => {
+            if (!a.createdAt || !b.createdAt) return 0;
+            return b.createdAt.getTime() - a.createdAt.getTime();
+          });
+        
+        setPosts(publishedPosts);
       } catch (error) {
         console.error('Error fetching posts:', error);
       } finally {
@@ -67,7 +75,11 @@ export const BlogList = () => {
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.map((post) => (
-              <Card key={post.id} className="group flex flex-col">
+              <Card 
+                key={post.id} 
+                className="group flex flex-col cursor-pointer"
+                onClick={() => router.push(`/blog/${post.id}`)}
+              >
                 {post.imageUrl && (
                   <div className="w-full h-48 rounded-lg overflow-hidden mb-4">
                     <img
@@ -98,7 +110,15 @@ export const BlogList = () => {
                     {post.excerpt}
                   </p>
 
-                  <Button variant="secondary" size="sm" className="mt-4">
+                  <Button 
+                    variant="secondary" 
+                    size="sm" 
+                    className="mt-4"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      router.push(`/blog/${post.id}`);
+                    }}
+                  >
                     Read More
                   </Button>
                 </div>

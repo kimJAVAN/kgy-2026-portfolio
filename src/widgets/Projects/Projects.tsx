@@ -2,7 +2,9 @@
 
 import { useState } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
-import { Section, Card, Button } from '@/shared/ui';
+import { Section } from '@/shared/ui/Section';
+import { Card } from '@/shared/ui/Card';
+import { Button } from '@/shared/ui/Button';
 import { PROJECTS } from '@/shared/constants/data';
 import { ProjectFilter } from '@/features/project-filter/ProjectFilter';
 
@@ -12,6 +14,30 @@ export const Projects = () => {
   const filteredProjects = PROJECTS.filter((project) => {
     if (filter === 'All') return true;
     if (filter === 'Featured') return project.featured;
+    
+    // Frontend, Backend, Full-stack 필터링
+    if (filter === 'Frontend') {
+      return project.tags.some(tag => 
+        ['React', 'Vue', 'Next.js', 'Frontend'].some(
+          tech => tag.includes(tech)
+        )
+      );
+    }
+    if (filter === 'Backend') {
+      return project.tags.some(tag => 
+        ['Node.js', 'FastAPI', 'Backend','Next.js API' ].some(
+          tech => tag.includes(tech)
+        )
+      );
+    }
+    if (filter === 'Full-stack') {
+      return project.tags.some(tag => 
+        ['Next.js API'].some(
+          tech => tag.includes(tech)
+        )
+      );
+    }
+    
     return project.tags.some(tag => tag.toLowerCase().includes(filter.toLowerCase()));
   });
 

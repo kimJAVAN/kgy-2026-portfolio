@@ -29,7 +29,7 @@ export const Skills = () => {
           </h2>
           <div className="w-20 h-1 bg-emerald-500 mx-auto mb-8"></div>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            Technologies and tools I work with to bring ideas to life
+            아이디어를 실제로 구현하기 위해 사용하는 기술과 도구들
           </p>
         </div>
 
@@ -65,10 +65,12 @@ export const Skills = () => {
 
         <Card className="max-w-4xl mx-auto text-center">
           <p className="text-gray-400">
-            Always learning and exploring new technologies. Currently diving deep into{' '}
-            <span className="text-emerald-400 font-mono">Web3</span>,{' '}
-            <span className="text-emerald-400 font-mono">AI/ML</span>, and{' '}
-            <span className="text-emerald-400 font-mono">Cloud Architecture</span>
+            항상 배우고 탐구하는 자세로,
+            현재는{' '}
+            <span className="text-emerald-400 font-mono">Next.js</span>,{' '}
+            <span className="text-emerald-400 font-mono">AI</span>,{' '}
+            <span className="text-emerald-400 font-mono">TypeScript</span>를
+            중심으로 학습하고 있습니다.
           </p>
         </Card>
       </div>

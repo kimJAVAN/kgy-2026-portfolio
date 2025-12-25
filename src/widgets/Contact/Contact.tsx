@@ -1,6 +1,6 @@
 'use client';
 
-import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, FileText } from 'lucide-react';
 import { Section, Card } from '@/shared/ui';
 import { ContactForm } from '@/features/contact-form/ContactForm';
 import { SOCIAL_LINKS } from '@/shared/constants/data';
@@ -8,8 +8,8 @@ import { SOCIAL_LINKS } from '@/shared/constants/data';
 const ICON_MAP = {
   github: Github,
   linkedin: Linkedin,
-  twitter: Twitter,
   mail: Mail,
+  blog : FileText
 };
 
 export const Contact = () => {
@@ -22,7 +22,8 @@ export const Contact = () => {
           </h2>
           <div className="w-20 h-1 bg-emerald-500 mx-auto mb-8"></div>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            Have a project in mind or just want to chat? Feel free to reach out!
+            함께 이야기해보고 싶은 프로젝트가 있거나,<br/>
+            가볍게 이야기를 나누고 싶다면 언제든지 연락 주세요.
           </p>
         </div>
 
@@ -70,7 +71,7 @@ export const Contact = () => {
                 Location
               </h3>
               <p className="text-gray-400">
-                Based in Seoul, South Korea<br />
+                Based in Gyeonggi-do, South Korea<br/>
                 Open to remote opportunities worldwide
               </p>
             </Card>
