@@ -38,23 +38,44 @@ export const PROJECTS: Project[] = [
 ];
 
 export const SKILLS: Skill[] = [
+  // Frontend
   { name: 'React', category: 'frontend', level: 95 },
   { name: 'Next.js', category: 'frontend', level: 90 },
-  { name: 'TypeScript', category: 'frontend', level: 90 },
+  { name: 'JavaScript (ES6+)', category: 'frontend', level: 90 },
+  { name: 'TypeScript', category: 'frontend', level: 85 },
+
   { name: 'Tailwind CSS', category: 'frontend', level: 85 },
-  { name: 'Node.js', category: 'backend', level: 85 },
-  { name: 'PostgreSQL', category: 'backend', level: 80 },
-  { name: 'MongoDB', category: 'backend', level: 75 },
-  { name: 'Docker', category: 'tools', level: 80 },
-  { name: 'Git', category: 'tools', level: 90 },
-  { name: 'AWS', category: 'tools', level: 70 },
+  { name: 'Chakra UI', category: 'frontend', level: 70 },
+  { name: 'MUI', category: 'frontend', level: 80 },
+
+  { name: 'Axios', category: 'frontend', level: 75 },
+  { name: 'React Query', category: 'frontend', level: 75 },
+  { name: 'Swiper', category: 'frontend', level: 90 },
+
+  // Backend
+  { name: 'Next.js API Routes / Route Handlers', category: 'backend', level: 80 },
+  { name: 'Express.js', category: 'backend', level: 70 },
+  { name: 'REST API 연동', category: 'backend', level: 90 },
+
+  { name: 'Firebase (Authentication)', category: 'backend', level: 70 },
+  { name: 'Supabase (Database)', category: 'backend', level: 80 },
+
+  // Tools & DevOps
+  { name: 'GitHub', category: 'tools', level: 90 },
+  { name: 'Vercel', category: 'tools', level: 90 },
+
+  // Other
+  { name: 'Figma', category: 'other', level: 90 },
+  { name: 'Photoshop', category: 'other', level: 85 },
+  { name: 'Illustrator', category: 'other', level: 85 },
 ];
 
+
 export const SOCIAL_LINKS: SocialLink[] = [
-  { name: 'GitHub', url: 'https://github.com', icon: 'github' },
-  { name: 'LinkedIn', url: 'https://linkedin.com', icon: 'linkedin' },
-  { name: 'Twitter', url: 'https://twitter.com', icon: 'twitter' },
-  { name: 'Email', url: 'mailto:dev@example.com', icon: 'mail' },
+  { name: 'GitHub', url: 'https://github.com/kimJAVAN', icon: 'github' },
+  { name: 'Blog', url: 'https://fron-end-note.tistory.com/', icon: 'blog' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/%EA%B7%BC%EC%98%81-%EA%B9%80-48143b342/', icon: 'linkedin' },
+  { name: 'Email', url: 'ookim7717@naver.com', icon: 'mail' },
 ];
 
 export const NAV_ITEMS = [

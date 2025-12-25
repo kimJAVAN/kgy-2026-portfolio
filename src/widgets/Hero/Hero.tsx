@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { Section, Button } from '@/shared/ui';
 
-const ROLES = ['Frontend Developer', 'Full-stack Engineer', 'UI/UX Enthusiast', 'Problem Solver'];
+const ROLES = ['Frontend Developer', 'Full-stack Engineer', 'UI/UX Enthusiast', 'Problem Solver','User-Centered Engineer'];
 
 export const Hero = () => {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -59,8 +59,8 @@ export const Hero = () => {
           </div>
           
           <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-12">
-            Crafting elegant solutions to complex problems. Passionate about clean code, 
-            innovative design, and building experiences that matter.
+            왜 필요한지부터 고민하고,<br/>
+            복잡함을 의미 있는 사용자 경험으로 구현합니다.
           </p>
           
           <div className="flex gap-4 justify-center">
