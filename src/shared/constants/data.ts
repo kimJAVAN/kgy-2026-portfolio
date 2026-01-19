@@ -1,24 +1,25 @@
 import { Project, Skill, SocialLink } from '@/shared/types/index';
 
 export const PROJECTS: Project[] = [
-  {
+    {
     id: '1',
-    title: 'Kt cloud Tech-up / Bookstore Project',
-    description: '빠르고 편한 구매 경험 중심의 Next.js 기반 온라인 서점 플랫폼. Firebase 인증, Supabase DB, 실시간 재고 관리 및 관리자 페이지 구현',
-    tags: ['Next.js', 'JavaScript', 'Firebase', 'Supabase', 'Tailwind CSS','Next.js API'],
-    githubUrl: 'https://github.com/yourusername/triplecore-bookstore',
-    liveUrl: 'https://readme-kt-2025.vercel.app/',
+    title: 'Kt cloud Tech-up / IT Node Communication Web',
+    description: 'AI 및 LLM 통합을 통한 IT 노드 커뮤니케이션 플랫폼. Next.js, Supabase, Tailwind CSS 기반으로 구축, Claude 및 Gemini API 활용',
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS','Next.js API','Axios', 'React Query','AI / LLM Integration (Claude, Gemini)'],
+    githubUrl: 'https://github.com/kt-triple-core/NEXTSTEP_KT_2025',
+    liveUrl : 'https://nextstep-kt-2025.vercel.app/',
     featured: true,
   },
   {
     id: '2',
-    title: '[개발중] Kt cloud Tech-up / IT Node Communication Web',
-    description: 'AI 및 LLM 통합을 통한 IT 노드 커뮤니케이션 플랫폼. Next.js, Supabase, Tailwind CSS 기반으로 구축, Claude 및 Gemini API 활용',
-    tags: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS','Next.js API','Axios', 'React Query','AI / LLM Integration (Claude, Gemini)'],
-    githubUrl: 'https://github.com/kt-triple-core/NEXTSTEP_KT_2025',
-
+    title: 'Kt cloud Tech-up / Bookstore Project',
+    description: '빠르고 편한 구매 경험 중심의 Next.js 기반 온라인 서점 플랫폼. Firebase 인증, Supabase DB, 실시간 재고 관리 및 관리자 페이지 구현',
+    tags: ['Next.js', 'JavaScript', 'Firebase', 'Supabase', 'Tailwind CSS','Next.js API'],
+    githubUrl: 'https://github.com/kimJAVAN/README_KT_2025',
+    liveUrl: 'https://readme-kt-2025.vercel.app/',
     featured: true,
   },
+
   {
     id: '3',
     title: 'Portfolio Website',
